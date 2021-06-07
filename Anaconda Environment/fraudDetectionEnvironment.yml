@@ -1,0 +1,4 @@
+name: fraudDetection
+channels:
+  - defaults
+prefix: C:\Users\Owner\anaconda3\envs\fraudDetection\envs\fraudDetection
