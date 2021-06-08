@@ -220,9 +220,6 @@ def falsePositiveDataset(X_test,y_test,y_pred):
 #-------------------------------------------------------------------------------------------------------------
 #                                               Retrieving the dataset
 
-#dataset
-#https://www.kaggle.com/ntnu-testimon/banksim1?select=bs140513_032310.csv
-
 data = pandas.read_csv("dataset/bs140513_032310.csv")
 print("Database Accessed")
 print(data.info())
@@ -288,9 +285,6 @@ X_res, y_res = sm.fit_resample(X, y)
 y_res = pd.DataFrame(y_res)
 print(y_res)
 print(X_res)
-
-# cross validation wasn't applied since we have a lot of instances
-# it should be better to cross validate most of the times
 
 print("Base accuracy score we must beat is: ",df_non_fraud.fraud.count() / np.add(df_non_fraud.fraud.count(), df_fraud.fraud.count()) * 100)
 # Our accuracy is very high but we are not detecting any frauds so it is a useless classifier.
@@ -370,11 +364,10 @@ returnDataset = 1
 #                                                   Normal Training
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, shuffle=True, stratify=y)
 
-# returning confusion matrix and dataframe of false positve records
+# returning confusion matrix and dataframe of false positive records
 cm1,returnedDataframe = XGBoost(X_train, X_test, y_train, y_test,returnDataset)
 
 print(cm1[0])
-print("Test")
 print(returnedDataframe.head())
 
 # determining the name of the file
